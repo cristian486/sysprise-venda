@@ -1,0 +1,34 @@
+syntax = "proto3";
+package pb;
+option java_multiple_files = true;
+
+
+message ProdutoId {
+  uint64 produtoId = 1;
+}
+
+message ProdutoExiste {
+  bool existe = 1;
+}
+
+message ProductName {
+  string nome = 1;
+}
+
+message EstoqueMinimo {
+  double estoqueMinimo = 1;
+}
+
+message ProdutoVenda {
+  uint64 id = 1;
+  double precoDeVenda = 2;
+  bool vendaFracionada = 3;
+}
+
+
+service ProdutoService {
+  rpc VerifyProductExistence(ProdutoId) returns (ProdutoExiste) {}
+  rpc GetProductname(ProdutoId) returns (ProductName) {}
+  rpc GetProdutoVenda(ProdutoId) returns (ProdutoVenda) {}
+  rpc GetEstoqueMinimo(ProdutoId) returns (EstoqueMinimo) {}
+}

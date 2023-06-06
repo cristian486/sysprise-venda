@@ -1,0 +1,15 @@
+syntax="proto3";
+package pb;
+option java_multiple_files=true;
+message PessoaId {
+  uint64 id = 1;
+}
+
+message PessoaExiste {
+  bool existe = 1;
+}
+
+
+service PessoaService {
+  rpc VerifyExistence(PessoaId) returns (PessoaExiste) {}
+}
